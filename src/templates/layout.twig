@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% block head %}
+        <title>{% block title %}{% endblock %} - Intergration</title>
+    {% endblock %}
+</head>
+<body>
+<div id="page-wrapper">{% block content %}
+        {% endblock %}</div>
+<div id="footer">
+    {% block footer %}
+        &copy; Copyright 20xx
+    {% endblock %}
+</div>
+<script type="module" src="/main.js"></script>
+</body>
+</html>

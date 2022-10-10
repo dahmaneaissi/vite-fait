@@ -1,29 +1,21 @@
 import { defineConfig } from 'vite'
-import { createHtmlPlugin } from 'vite-plugin-html'
+import twig from 'vite-plugin-twig'
+import { resolve } from 'path'
 
 export default defineConfig( ({ command, mode }) => {
     return {
-        base: '',
-        define: {
-            ROOT : process.cwd()
+        base : './',
+        build : {
+            rollupOptions: {
+                input: {
+                    main:   resolve(__dirname, "./index.html"),
+                    nested: resolve(__dirname, './home.html')
+                }
+            },
         },
-        plugins : [
 
-            createHtmlPlugin({
-                minify: true,
-                pages: [
-                    {
-                        entry: 'main.js',
-                        filename: 'index.html',
-                        template: 'index.html',
-                        injectOptions: {
-                            data: {
-                                title: 'index',
-                            }
-                        }
-                    }
-                ]
-            })
+        plugins : [
+            twig()
         ]
     }
 })
