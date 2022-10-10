@@ -3,7 +3,12 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 
 export default defineConfig( ({ command, mode }) => {
     return {
+        base: '',
+        define: {
+            ROOT : process.cwd()
+        },
         plugins : [
+
             createHtmlPlugin({
                 minify: true,
                 pages: [
@@ -13,9 +18,9 @@ export default defineConfig( ({ command, mode }) => {
                         template: 'index.html',
                         injectOptions: {
                             data: {
-                                title: 'index home',
+                                title: 'index',
                             }
-                        },
+                        }
                     }
                 ]
             })
